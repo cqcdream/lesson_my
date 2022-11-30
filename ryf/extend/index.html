@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // {name:,age:,sayHi() {}}
+        function Person(name,age) {
+            // 函数运行时会有this 指向调用方式
+            this.name = name;
+            this.age = age;
+            // var o = {};
+            // o.name = name;
+            // o.age = age;
+            // return  o;
+        }
+        // 原型
+        Person.prototype = {
+            sayHi() {
+                console.log(`${this.name},你好`);
+            }
+        }
+        // let obj = {};
+        // let obj = Person('小美',17);
+        let obj = new Person('小美',17);// this 不需要返回
+        // obj.__proto__ = Person.prototype;
+        obj.sayHi();
+    </script>
+</body>
+</html>
