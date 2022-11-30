@@ -1,0 +1,9 @@
+- git init
+- git add readme.md 多次添加暂存区
+- git commit -m 'reason' 一次性提交
+- git log --oneline 提交记录
+- git reset --hard HEAD^ 月光宝盒 跳到指定hashId
+- git status 当前仓库状态
+- git pull origin master 拉下来
+- git push origin master 提交到远程仓库 origin 远程仓库地址
+- git diff 查看和修改前有什么不一样地方
