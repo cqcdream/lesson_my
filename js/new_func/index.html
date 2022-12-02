@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var 可以重复声明 let 不能
+        // 挂载在window 上  let 不会
+        // 代码本质？ 文本字符串    编辑器
+        // 交给 js 编译器 Chrome V8引擎
+        // 分词 var name = 字符串数据类型 
+        // 编译阶段 编译成二进制 语法校验 console.log(name);// undefined 变量提升  
+        // name  由let 声明 进入暂时性死区
+        // 运行阶段 
+        // 内存中声明 
+        // 不同的对象
+        // VO {global: , name}
+        // 变量查找 按作用域来查找
+        // var name = "windowsName"; // global scope 全局作用域
+        // var y = 5;
+        // function a() {
+        //     // 作用域链
+        //     // VO {function: , name }变量对象
+        //     // AO {function: , name, x, chain: Global VO }函数的活动对象
+        //     var x = 2;
+        //     var name = "Cherry"; // function scope
+        //     console.log(name);
+        //     console.log(x,y);
+        // }
+        // a(); // 一段代码 内存中 进入到执行栈
+        // 'use strict';// 严格模式
+        var name = "windowsName";
+        var a = {
+            name: "Cherry",
+            fn: function() {
+                console.log(this.name);
+            }
+        }
+        a.fn();
+        var c= b; // 赋值 值传递
+        var f = a.fn; // 赋值 函数对象 f 指向 引用式赋值
+        f(); // window.f
+        window.a.fn();
+        // function a() {
+            // this 不会指向 调用调用它的对象
+        //     var name = "Cherry";
+        //     console.log(this.name); // 无法确定 this 值由调用方式决定
+        // }
+        // a(); // 函数一定会提升包括值 到window  window.a()
+    </script>
+</body>
+</html>
