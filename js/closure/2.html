@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function func(cb) {
+        //     setTimeout(() => {
+        //         console.log('---');
+        //         cb();
+        //     },0)
+        // }
+        // // 定时器发生后执行的代码
+        // function cb() {
+
+        //     console.log('???')
+        // }
+        // func(cb)
+        // reslove 解决了     reject 失败了
+        // 有一个耗时任务 es6 Promise   panding 状态
+        const p = new Promise((resolve,reject) => {
+            // 封装一个耗时任务
+            setTimeout(() => {
+                console.log(p);
+                // resolve('1111');
+                reject('不好意思'); //失败
+                console.log(p);
+            },1000)
+        })// 解决异步问题
+        // console.log(p);
+        // 开始是pending... 不会执行
+        p.then((data) => {
+            console.log(data)
+        }).catch(e => {
+            console.log(e,'失败了');
+        })
+    </script>
+</body>
+</html>

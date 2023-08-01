@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div class="box">
+    <div>
+        <label for="unDebounce">没有防抖的input</label>
+        <input type="text" id="unDebounce" placeholder="请输入关键字">
+    </div>
+</div>
+<script>
+// 前端 html js css  
+// js 可以黏糊 html css 
+// 百度搜索 search suggest
+// 全局作用域 js 当前单线程的global window 
+let inputa = document.getElementById('unDebounce'); // 类型
+// js 一切复杂类型都是对象，具体是Object  那个子类型
+// HTMLInputElement  CSSStyleDeclaration
+// inputa.value = '木木夕'
+// console.log(Object.prototype.toString.call(inputa.style));
+inputa.addEventListener('keyup',function(e) {
+    // 耗时的异步 xhr fetch setTimeout ...
+    // console.log(Object.prototype.toString.call(e));
+    // console.log(e.key,e.keyCode);
+    // JS 主动去拉取数据 fetch  ajax(XMLHttpRequest)
+    // 模块化，得到用户输入
+    // ajax 函数是高阶函数 相对于普通函数
+    // 回调函数解决
+    let res = ajax(e.target.value, (res) => {
+        console.log(res,'---');
+    });
+    // 异步思想
+})
+function ajax(keyword,cb){
+    // 去请求 通过http 协议再去后端拉取
+    // 数据格式json， 最早是XML
+    // XMLHttpRequest(xhr) 对象用于与服务器交互
+    const xhr = new XMLHttpRequest();// 前后端分离，前端去拉取数据的核心对象
+    // GET HTTP Method 
+    // URL
+    // JSON
+    console.log(Object.prototype.toString.call(xhr),xhr.readyState); // 0 代理被创建，但尚未调用 open() 方法
+    xhr.open("GET","https://www.fastmock.site/mock/a7cd4c626b7d88b6a058b08e8e99c179/rxkf/ry")
+    console.log(xhr.readyState); // 1 open() 方法已经被调用
+    xhr.send()// 请求才真正的发送出去了
+    // 类似 DOM 0
+    xhr.onreadystatechange = function() {
+        console.log(xhr.readyState); 
+        // 2 send() 方法已经被调用，并且头部和状态已经可获得
+        // 3 属性已经包含部分数据 HTTP 分块传输
+        // 4 数据完全到达
+        if(xhr.readyState == 4) {
+            // cb 是一个回调函数 callback 简写
+           cb(JSON.parse(xhr.responseText)); //解析 JSON 字符串
+        }
+    }
+}
+</script>
+</body>
+</html>
