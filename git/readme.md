@@ -1,6 +1,7 @@
 - git init
 - git add readme.md 多次添加暂存区
-- git commit -m 'reason' 一次性提交
+- git commit -m 'reason' 只提交添加到缓存区的
+- git commit -a -m '' 能提交修改过，但没有添加到缓存区的文件（修改过就能提交）
 - git log --oneline 提交记录
 - git reset --hard HEAD^ 月光宝盒 跳到指定hashId
 - git status 当前仓库状态
